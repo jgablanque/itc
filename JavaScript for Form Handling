@@ -1,0 +1,9 @@
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Handle registration logic here (e.g., API call to backend)
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Handle login logic here (e.g., API call to backend)
+});
