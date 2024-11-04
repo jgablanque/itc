@@ -1,0 +1,9 @@
+social-webpage/
+│
+├── index.html
+├── login.html
+├── register.html
+├── dashboard.html
+├── styles.css
+├── script.js
+└── README.md
