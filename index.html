@@ -1,1 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Web App</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3;
+    }
+    .container {
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .feature-card {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .feature-category {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .menu {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .menu button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 10px;
+      }
+      .feature-card {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
 
+<!-- Main Content -->
+<div class="container">
+  <h2>Welcome!</h2>
+  <p>Select a feature below:</p>
+
+  <!-- Conversion Features -->
+  <div class="feature-category">Unit Conversions</div>
+  <div class="feature-card">
+    <h3>Choose Conversion Type</h3>
+    <select id="conversionType" class="w3-select">
+      <option value="CtoF">Celsius to Fahrenheit</option>
+      <option value="FtoC">Fahrenheit to Celsius</option>
+      <option value="MtoF">Meters to Feet</option>
+      <option value="FtoM">Feet to Meters</option>
+    </select>
+    <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
+    <button class="w3-button w3-teal w3-block" onclick="performConversion()">Convert</button>
+    <div id="conversionResult" class="w3-margin-top"></div>
+  </div>
+
+  <!-- Additional Features -->
+  <div class="feature-category">Factorial (While Loop)</div>
+  <div class="feature-card">
+    <h3>Find Factorial</h3>
+    <input type="number" id="factorialInput" class="w3-input" placeholder="Enter Number">
+    <button class="w3-button w3-teal w3-block" onclick="findFactorial()">Calculate</button>
+    <div id="factorialResult" class="w3-margin-top"></div>
+  </div>
+
+  <div class="feature-category">Sum and Average (First N Natural Numbers)</div>
+  <div class="feature-card">
+    <h3>Calculate Sum and Average</h3>
+    <input type="number" id="sumAverageInput" class="w3-input" placeholder="Enter N">
+    <button class="w3-button w3-teal w3-block" onclick="calculateSumAndAverage()">Calculate</button>
+    <div id="sumAverageResult" class="w3-margin-top"></div>
+  </div>
+
+  <div class="feature-category">Income Tax Calculator</div>
+  <div class="feature-card">
+    <h3>Calculate Income Tax</h3>
+    <input type="number" id="incomeInput" class="w3-input" placeholder="Enter Income">
+    <button class="w3-button w3-teal w3-block" onclick="calculateIncomeTax()">Calculate</button>
+    <div id="incomeTaxResult" class="w3-margin-top"></div>
+  </div>
+
+  <div class="feature-category">Payroll Calculator</div>
+  <div class="feature-card">
+    <h3>Calculate Payroll</h3>
+    <input type="number" id="hoursWorked" class="w3-input" placeholder="Hours Worked">
+    <input type="number" id="payPerHour" class="w3-input" placeholder="Pay Per Hour">
+    <button class="w3-button w3-teal w3-block" onclick="calculatePayroll()">Calculate Payroll</button>
+    <div id="payrollResult" class="w3-margin-top"></div>
+  </div>
+</div>
+
+<!-- Menu -->
+<div id="menu" class="menu">
+  <button onclick="toggleActivityLog()">Activity Log</button>
+</div>
+
+<script>
+  let activityLog = [];
+
+  function performConversion() {
+    const type = document.getElementById("conversionType").value;
+    const value = parseFloat(document.getElementById("conversionInput").value);
+    let result = "";
+    if (!isNaN(value)) {
+      switch (type) {
+        case "CtoF":
+          result = `${value}°C = ${(value * 9) / 5 + 32}°F`;
+          break;
+        case "FtoC":
+          result = `${value}°F = ${((value - 32) * 5) / 9}°C`;
+          break;
+        case "MtoF":
+          result = `${value} meters = ${(value * 3.28084).toFixed(2)} feet`;
+          break;
+        case "FtoM":
+          result = `${value} feet = ${(value / 3.28084).toFixed(2)} meters`;
+          break;
+      }
+      document.getElementById("conversionResult").textContent = result;
+      activityLog.push(`Conversion (${type}): ${result}`);
+    } else {
+      document.getElementById("conversionResult").textContent = "Invalid input.";
+    }
+  }
+
+  function findFactorial() {
+    const num = parseInt(document.getElementById("factorialInput").value);
+    if (!isNaN(num) && num >= 0) {
+      let result = 1;
+      let i = 1;
+      while (i <= num) {
+        result *= i++;
+      }
+      document.getElementById("factorialResult").textContent = `Factorial: ${result}`;
+      activityLog.push(`Factorial of ${num}: ${result}`);
+    } else {
+      document.getElementById("factorialResult").textContent = "Invalid input.";
+    }
+  }
+
+  function calculateSumAndAverage() {
+    const n = parseInt(document.getElementById("sumAverageInput").value);
+    if (!isNaN(n) && n > 0) {
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      const average = sum / n;
+      document.getElementById("sumAverageResult").textContent = `Sum: ${sum}, Average: ${average}`;
+      activityLog.push(`Sum of first ${n} numbers: ${sum}, Average: ${average}`);
+    } else {
+      document.getElementById("sumAverageResult").textContent = "Invalid input.";
+    }
+  }
+
+  function calculateIncomeTax() {
+    const income = parseFloat(document.getElementById("incomeInput").value);
+    if (!isNaN(income)) {
+      let tax = 0;
+      if (income <= 250000) tax = 0;
+      else if (income <= 500000) tax = (income - 250000) * 0.05;
+      else if (income <= 1000000) tax = (income - 500000) * 0.2 + 12500;
+      else tax = (income - 1000000) * 0.3 + 12500 + 100000;
+      document.getElementById("incomeTaxResult").textContent = `Tax: ₹${tax.toFixed(2)}`;
+      activityLog.push(`Income tax for ₹${income}: ₹${tax.toFixed(2)}`);
+    } else {
+      document.getElementById("incomeTaxResult").textContent = "Invalid input.";
+    }
+  }
+
+  function calculatePayroll() {
+    const hours = parseFloat(document.getElementById("hoursWorked").value);
+    const pay = parseFloat(document.getElementById("payPerHour").value);
+    if (!isNaN(hours) && !isNaN(pay) && hours >= 0 && pay >= 0) {
+      const payroll = hours * pay;
+      document.getElementById("payrollResult").textContent = `Payroll: ₹${payroll.toFixed(2)}`;
+      activityLog.push(`Payroll for ${hours} hours at ₹${pay} per hour: ₹${payroll.toFixed(2)}`);
+    } else {
+      document.getElementById("payrollResult").textContent = "Invalid input.";
+    }
+  }
+
+  function toggleActivityLog() {
+    const logWindow = window.open("", "Activity Log", "width=400,height=300");
+    logWindow.document.write("<h3>Activity Log</h3>");
+    logWindow.document.write("<ul>");
+    activityLog.forEach((log) => {
+      logWindow.document.write(`<li>${log}</li>`);
+    });
+    logWindow.document.write("</ul>");
+  }
+</script>
+
+</body>
+</html>
