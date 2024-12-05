@@ -1,68 +1,184 @@
+/* General Styling */
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #121212;
   color: #f3f3f3;
+  background-image: url('https://source.unsplash.com/1600x900/?abstract,technology');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.hidden { 
-  display: none; 
-}
-
+/* Container Styling */
 .container {
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 800px;
   padding: 20px;
   border-radius: 10px;
-  background: #1e1e2f;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  background: rgba(30, 30, 47, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
 
+/* Title Styling */
+h2 {
+  font-size: 28px;
+  text-align: center;
+  color: #00adb5;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Paragraph Styling */
+p {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #b3b3b3;
+}
+
+/* Feature Cards */
 .feature-card {
   margin-bottom: 20px;
   padding: 15px;
-  border: 1px solid #333;
-  border-radius: 5px;
-  background-color: #282a36;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: rgba(42, 42, 63, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #00adb5, #007d82);
 }
 
+/* Category Titles */
 .feature-category {
   margin-top: 30px;
   font-size: 18px;
   font-weight: bold;
+  color: #00adb5;
   border-bottom: 2px solid #444;
   padding-bottom: 5px;
-  color: #f3f3f3;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Input Fields */
+.w3-input {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #2a2a3f;
+  color: #f3f3f3;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.w3-input:focus {
+  outline: none;
+  border: 1px solid #00adb5;
+  box-shadow: 0px 0px 8px rgba(0, 173, 181, 0.8);
+}
+
+/* Buttons */
+.w3-button {
+  display: inline-block;
+  background-color: #00adb5;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.w3-button:hover {
+  background-color: #007d82;
+  box-shadow: 0px 4px 15px rgba(0, 173, 181, 0.6);
+}
+
+/* Payroll Table */
+.w3-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2a2a3f;
+}
+.w3-table th, .w3-table td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+.w3-table th {
+  background-color: #333;
+  color: #00adb5;
+  font-weight: bold;
+}
+.w3-table tbody tr:nth-child(even) {
+  background-color: #3b3b5e;
+}
+.w3-button.w3-red {
+  background-color: #ff5e5e;
+}
+.w3-button.w3-red:hover {
+  background-color: #e04545;
+}
+
+/* Activity Log */
+#activityLog {
+  max-height: 200px;
+  overflow-y: scroll;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: rgba(42, 42, 63, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+.hidden { display: none; }
+
+/* Menu Bar */
 .menu {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #333;
-  color: #fff;
+  background: rgba(51, 51, 51, 0.95);
+  color: white;
   text-align: center;
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.5);
 }
-
 .menu button {
   background: none;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
 }
+.menu button:hover {
+  color: #00adb5;
+}
 
-#activityLog {
-  max-height: 200px;
-  overflow-y: scroll;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.feature-card:hover {
+  animation: float 1.5s ease-in-out infinite;
 }
