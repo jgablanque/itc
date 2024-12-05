@@ -66,7 +66,7 @@ h1 {
   background: rgba(30, 30, 47, 0.9);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: 100%;
+  width: 80%;
   max-width: 800px;
 }
 
@@ -142,87 +142,23 @@ footer a:hover {
   color: #007d82;
 }
 
-/* Media Queries */
-@media only screen and (max-width: 768px) {
-  .feature-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-  }
+/* Updated Media Query for Mobile */
+    @media only screen and (max-width: 480px) {
+      .content-section {
+        margin-bottom: 30px;
+      }
 
-  .feature-card {
-    padding: 15px;
-  }
+      footer {
+        padding-top: 20px;
+        margin-top: 20px;
+      }
 
-  .feature-card img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .feature-card h3 {
-    font-size: 1rem;
-  }
-
-  .content-section {
-    padding: 15px;
-  }
-
-  .back-button {
-    padding: 8px 16px;
-  }
-
-  #introScreen {
-    padding: 15px;
-    height: auto;
-  }
-
-  #introScreen h2 {
-    font-size: 1.5rem;
-  }
-
-  #introScreen button {
-    font-size: 0.9rem;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .feature-container {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .feature-card {
-    padding: 10px;
-  }
-
-  .feature-card img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .feature-card h3 {
-    font-size: 0.9rem;
-  }
-
-  .content-section {
-    padding: 10px;
-  }
-
-  .back-button {
-    padding: 6px 12px;
-  }
-
-  #introScreen h2 {
-    font-size: 1.2rem;
-  }
-
-  #introScreen button {
-    font-size: 0.8rem;
-  }
-
-  footer {
-    font-size: 0.9rem;
-  }
-}
+      .back-button {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
 
   </style>
 </head>
@@ -231,11 +167,11 @@ footer a:hover {
   <div id="introScreen">
     <h2>Welcome to SmartCalc World!</h2>
     <p>Explore a hub of calculators and tools designed to make your life easier. 🚀</p>
-    <button onclick="showMainContent()">Enter SmartCalc World</button>
+    <button onclick="showMainContent()">Enter Smart Calculator</button>
   </div>
 
   <header style="display: none;">
-    <h1>Welcome to SmartCalc World</h1>
+    <h1>Welcome to the Smart Calculator</h1>
     <p>Click a feature below to get started!</p>
   </header>
 
@@ -336,12 +272,9 @@ footer a:hover {
 
   <!-- Footer -->
   <footer>
-    <p>Designed by SmartCalc World Team. &copy; 2024</p>
+    <p>Designed by Jedrik Ablanque. &copy; 2024</p>
     <p>
-      <a href="#">Privacy Policy</a>
-      |
-      <a href="#">Contact Us</a>
-    </p>
+     
   </footer>
 
   <script>
