@@ -3,38 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Responsive Web App</title>
+  <title>SmartCalc World</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
+    /* General Styling */
     body {
       font-family: "Arial", sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f3f3f3;
+      background-color: #121212;
+      color: #f3f3f3;
     }
     .hidden { display: none; }
+
+    /* Container Styling */
     .container {
       margin: 20px auto;
       max-width: 600px;
       padding: 20px;
-      border: 1px solid #ddd;
       border-radius: 10px;
-      background: #fff;
+      background: #1e1e2f;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
+
+    /* Feature Cards */
     .feature-card {
       margin-bottom: 20px;
       padding: 15px;
-      border: 1px solid #ddd;
       border-radius: 5px;
-      background-color: #fff;
+      background-color: #2a2a3f;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Feature Category Titles */
     .feature-category {
       margin-top: 30px;
       font-size: 18px;
       font-weight: bold;
-      border-bottom: 2px solid #ccc;
+      border-bottom: 2px solid #444;
       padding-bottom: 5px;
     }
+
+    /* Button Styles */
+    .w3-button {
+      background-color: #00adb5;
+      color: white;
+      border: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .w3-button:hover {
+      background-color: #007d82;
+      box-shadow: 0 4px 10px rgba(0, 173, 181, 0.5);
+    }
+
+    /* Menu Bar */
     .menu {
       position: fixed;
       bottom: 0;
@@ -54,13 +80,27 @@
       font-size: 16px;
       cursor: pointer;
     }
+
+    /* Activity Log */
     #activityLog {
       max-height: 200px;
       overflow-y: scroll;
       padding: 10px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
+      background-color: #2a2a3f;
       border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Tables */
+    .w3-table {
+      background-color: #2a2a3f;
+      color: white;
+    }
+    .w3-light-grey {
+      background-color: #333 !important;
+    }
+    .w3-button.w3-red {
+      background-color: #ff5e5e;
     }
   </style>
 </head>
@@ -68,8 +108,8 @@
 
 <div id="mainContent">
   <div class="container">
-    <h2>Welcome, User!</h2>
-    <p>Select a feature below:</p>
+    <h2>Welcome to SmartCalc World!</h2>
+    <p>Your go-to hub for calculators, conversions, and more.</p>
 
     <!-- Conversion Features -->
     <div class="feature-category">Unit Conversions</div>
@@ -82,10 +122,11 @@
         <option value="FtoM">Feet to Meters</option>
       </select>
       <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
-      <button class="w3-button w3-teal w3-block" onclick="performConversion()">Convert</button>
+      <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
       <div id="conversionResult" class="w3-margin-top"></div>
     </div>
-  <!-- Additional Features -->
+
+   <!-- Additional Features -->
     <div class="feature-category">Factorial (While Loop)</div>
     <div class="feature-card">
       <h3>Find Factorial</h3>
@@ -137,6 +178,9 @@
   </div>
 </div>
 
+  </div>
+</div>
+
 <div id="menu" class="menu">
   <button onclick="toggleActivityLog()">Activity Log</button>
 </div>
@@ -148,7 +192,7 @@
 </div>
 
 <script>
-  let activityLog = [];
+   let activityLog = [];
 
   let payrollList = [];
 
