@@ -7,162 +7,190 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
-   /* General Styling */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #1e1e30, #2a2a45);
-  color: #f3f3f3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
+    /* General Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1e1e30, #2a2a45);
+      color: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-h1 {
-  margin: 20px 0;
-}
+    h1 {
+      margin: 20px 0;
+    }
 
-.feature-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  width: 90%;
-  max-width: 1200px;
-}
+    .feature-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
 
-.feature-card {
-  background: rgba(30, 30, 47, 0.9);
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
+    .feature-card {
+      background: rgba(30, 30, 47, 0.9);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
 
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-}
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    }
 
-.feature-card img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
-}
+    .feature-card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
 
-.feature-card h3 {
-  font-size: 1.2rem;
-  color: #00adb5;
-}
+    .feature-card h3 {
+      font-size: 1.2rem;
+      color: #00adb5;
+    }
 
-.content-section {
-  display: none;
-  text-align: center;
-  padding: 20px;
-  background: rgba(30, 30, 47, 0.9);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: 80%;
-  max-width: 800px;
-}
+    .content-section {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background: rgba(30, 30, 47, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      width: 80%;
+      max-width: 800px;
+    }
 
-.back-button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background: #00adb5;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+    .back-button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background: #00adb5;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-.back-button:hover {
-  background: #007d82;
-}
+    .back-button:hover {
+      background: #007d82;
+    }
 
-/* Intro Screen */
-#introScreen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  height: 100vh;
-  background: rgba(30, 30, 47, 0.95);
-}
+    /* Intro Screen */
+    #introScreen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      height: 100vh;
+      background: rgba(30, 30, 47, 0.95);
+    }
 
-#introScreen h2 {
-  color: #00adb5;
-  margin-bottom: 10px;
-}
+    #introScreen h2 {
+      color: #00adb5;
+      margin-bottom: 10px;
+    }
 
-#introScreen p {
-  margin-bottom: 20px;
-}
+    #introScreen p {
+      margin-bottom: 20px;
+    }
 
-#introScreen button {
-  padding: 10px 20px;
-  background: #00adb5;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+    #introScreen button {
+      padding: 10px 20px;
+      background: #00adb5;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-#introScreen button:hover {
-  background: #007d82;
-}
+    #introScreen button:hover {
+      background: #007d82;
+    }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px 0;
-  background-color: #1e1e30;
-  color: #00adb5;
-}
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #1e1e30;
+      color: #00adb5;
+    }
 
-footer a {
-  color: #00adb5;
-  margin: 0 10px;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
+    footer a {
+      color: #00adb5;
+      margin: 0 10px;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
 
-footer a:hover {
-  color: #007d82;
-}
+    footer a:hover {
+      color: #007d82;
+    }
 
-/* Updated Media Query for Mobile */
-    @media only screen and (max-width: 480px) {
-      .content-section {
-        margin-bottom: 30px;
-      }
+    /* Light Mode */
+    .light-mode {
+      background: #f3f3f3;
+      color: #1e1e30;
+    }
 
-      footer {
-        padding-top: 20px;
-        margin-top: 20px;
-      }
+    .light-mode .feature-card {
+      background: #eaeaea;
+      color: #1e1e30;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-      .back-button {
-        margin-bottom: 20px;
-      }
+    .light-mode #introScreen {
+      background: rgba(240, 240, 240, 0.95);
+    }
+
+    .light-mode footer {
+      background-color: #f3f3f3;
+      color: #1e1e30;
+    }
+
+    .light-mode footer a {
+      color: #1e1e30;
+    }
+
+    /* Toggle Button */
+    .toggle-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      background: #00adb5;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .toggle-button:hover {
+      background: #007d82;
     }
   </style>
 </head>
-
-  </style>
-</head>
 <body>
+  <!-- Light/Dark Mode Toggle Button -->
+  <button class="toggle-button" onclick="toggleMode()">🌙</button>
+
   <!-- Intro Screen -->
   <div id="introScreen">
     <h2>Welcome to SmartCalc World!</h2>
@@ -220,30 +248,31 @@ footer a:hover {
     <h2>Factorial Calculator</h2>
     <h3>Find Factorial</h3>
     <input type="number" id="factorialInput" class="w3-input" placeholder="Enter Number">
-    <button class="w3-button w3-teal w3-block" onclick="findFactorial()">Calculate</button>
+    <button class="w3-button w3-block" onclick="calculateFactorial()">Calculate</button>
     <div id="factorialResult" class="w3-margin-top"></div>
   </div>
 
   <div id="sumAverage" class="content-section">
     <button class="back-button" onclick="goBack()">← Back</button>
-    <h2>Sum and Average Calculator</h2>
-    <h3>Calculate Sum and Average</h3>
-    <input type="number" id="sumAverageInput" class="w3-input" placeholder="Enter N">
-    <button class="w3-button w3-teal w3-block" onclick="calculateSumAndAverage()">Calculate</button>
+    <h2>Sum & Average Calculator</h2>
+    <h3>Enter Numbers (comma-separated)</h3>
+    <input type="text" id="sumAverageInput" class="w3-input">
+    <button class="w3-button w3-block" onclick="calculateSumAverage()">Calculate</button>
     <div id="sumAverageResult" class="w3-margin-top"></div>
   </div>
 
   <div id="incomeTax" class="content-section">
     <button class="back-button" onclick="goBack()">← Back</button>
     <h2>Income Tax Calculator</h2>
-    <input type="number" id="incomeInput" class="w3-input" placeholder="Enter Income">
-    <button class="w3-button w3-teal w3-block" onclick="calculateIncomeTax()">Calculate Tax</button>
+    <h3>Enter Income</h3>
+    <input type="number" id="incomeTaxInput" class="w3-input">
+    <button class="w3-button w3-block" onclick="calculateIncomeTax()">Calculate</button>
     <div id="incomeTaxResult" class="w3-margin-top"></div>
   </div>
 
   <div id="payroll" class="content-section">
     <button class="back-button" onclick="goBack()">← Back</button>
-    <h2>Payroll Manager</h2>
+     <h2>Payroll Manager</h2>
     <div class="feature-category">Payroll Calculator</div>
     <div class="feature-card">
       <h3>Manage Payroll</h3>
@@ -278,6 +307,11 @@ footer a:hover {
   </footer>
 
   <script>
+  
+    // Toggle Light/Dark Mode
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
     // Function to show the main content (header and feature container)
     function showMainContent() {
       document.getElementById('introScreen').style.display = 'none';
