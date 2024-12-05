@@ -7,212 +7,308 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
-    /* General Styling */
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #1e1e30, #2a2a45);
-      color: #f3f3f3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 10px;
-    }
+   /* General Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1e1e30, #2a2a45);
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
 
-    .hidden {
-      display: none;
-    }
+h1 {
+  margin: 20px 0;
+}
 
-    /* Intro Screen Styling */
-    #introScreen {
-      text-align: center;
-      width: 100%;
-      max-width: 600px;
-      padding: 20px;
-      border-radius: 10px;
-      background-color: rgba(0, 0, 0, 0.9);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
+.feature-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
 
-    #introScreen h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
+.feature-card {
+  background: rgba(30, 30, 47, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
 
-    #introScreen p {
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
 
-    .w3-button-intro {
-      background-color: #00adb5;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
+.feature-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
 
-    .w3-button-intro:hover {
-      background-color: #007d82;
-      box-shadow: 0 4px 10px rgba(0, 173, 181, 0.5);
-    }
+.feature-card h3 {
+  font-size: 1.2rem;
+  color: #00adb5;
+}
 
-    /* Main Content Styling */
-    #mainContent {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      border-radius: 10px;
-      background: rgba(30, 30, 47, 0.9);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      width: 100%;
-      max-width: 800px;
-    }
+.content-section {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  background: rgba(30, 30, 47, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 800px;
+}
 
-    .feature-category {
-      font-size: 1.5rem;
-      margin: 20px 0 10px;
-      color: #00adb5;
-    }
+.back-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #00adb5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-    .feature-card {
-      margin-bottom: 20px;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
+.back-button:hover {
+  background: #007d82;
+}
 
-    .feature-card h3 {
-      margin-bottom: 10px;
-    }
+/* Intro Screen */
+#introScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  background: rgba(30, 30, 47, 0.95);
+}
 
-    .feature-card input,
-    .feature-card select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: 1px solid #333;
-      border-radius: 5px;
-      background-color: #1e1e30;
-      color: #f3f3f3;
-    }
+#introScreen h2 {
+  color: #00adb5;
+  margin-bottom: 10px;
+}
 
-    .feature-card button {
-      margin-top: 10px;
-    }
+#introScreen p {
+  margin-bottom: 20px;
+}
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 20px;
-      background-color: #1e1e30;
-      color: #00adb5;
-    }
+#introScreen button {
+  padding: 10px 20px;
+  background: #00adb5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-    footer a {
-      color: #00adb5;
-      margin: 0 10px;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
+#introScreen button:hover {
+  background: #007d82;
+}
 
-    footer a:hover {
-      color: #007d82;
-    }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #1e1e30;
+  color: #00adb5;
+}
 
-    /* Responsive Design */
-    @media (max-width: 600px) {
-      #introScreen h2 {
-        font-size: 1.5rem;
-      }
+footer a {
+  color: #00adb5;
+  margin: 0 10px;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
 
-      #introScreen p,
-      #mainContent p {
-        font-size: 0.9rem;
-      }
+footer a:hover {
+  color: #007d82;
+}
 
-      .w3-button-intro {
-        font-size: 1rem;
-        padding: 8px 16px;
-      }
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  .feature-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
 
-      #mainContent h2 {
-        font-size: 1.5rem;
-      }
-    }
+  .feature-card {
+    padding: 15px;
+  }
+
+  .feature-card img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .feature-card h3 {
+    font-size: 1rem;
+  }
+
+  .content-section {
+    padding: 15px;
+  }
+
+  .back-button {
+    padding: 8px 16px;
+  }
+
+  #introScreen {
+    padding: 15px;
+    height: auto;
+  }
+
+  #introScreen h2 {
+    font-size: 1.5rem;
+  }
+
+  #introScreen button {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .feature-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .feature-card {
+    padding: 10px;
+  }
+
+  .feature-card img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .feature-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .content-section {
+    padding: 10px;
+  }
+
+  .back-button {
+    padding: 6px 12px;
+  }
+
+  #introScreen h2 {
+    font-size: 1.2rem;
+  }
+
+  #introScreen button {
+    font-size: 0.8rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+}
+
   </style>
 </head>
 <body>
   <!-- Intro Screen -->
   <div id="introScreen">
     <h2>Welcome to SmartCalc World!</h2>
-    <p>Check out my awesome ITC project—SmartCalc World! 🚀</p>
-    <p>This website is designed to be your all-in-one hub for everyday calculations, whether you're converting units, managing payroll, calculating taxes, or exploring mathematical curiosities. It's user-friendly, mobile-responsive, and built with a sleek, modern design that adapts to any device.</p>
-    </ul>
-    <p>Click below to start exploring!</p>
-    <button class="w3-button-intro" onclick="showMainContent()">Click Here to Enter</button>
-    <p>Explore these exciting features:</p>
-    <ul>
-      <li><strong>Unit Conversions</strong> – Convert between Celsius and Fahrenheit or meters and feet.</li>
-      <li><strong>Factorial Calculator</strong> – Compute the factorial of any positive number.</li>
-      <li><strong>Sum and Average Calculator</strong> – Calculate the sum and average of the first N natural numbers.</li>
-      <li><strong>Income Tax Calculator</strong> – Understand your finances with Philippine tax rules.</li>
-      <li><strong>Payroll Manager</strong> – Streamline payroll calculations and manage employee data.</li>
-      
-    
+    <p>Explore a hub of calculators and tools designed to make your life easier. 🚀</p>
+    <button onclick="showMainContent()">Enter SmartCalc World</button>
   </div>
 
-  <!-- Main Content -->
-  <div id="mainContent">
-    <div class="feature-category">Unit Conversions</div>
-    <div class="feature-card">
-      <h3>Choose Conversion Type</h3>
-      <select id="conversionType" class="w3-select">
-        <option value="CtoF">Celsius to Fahrenheit</option>
-        <option value="FtoC">Fahrenheit to Celsius</option>
-        <option value="MtoF">Meters to Feet</option>
-        <option value="FtoM">Feet to Meters</option>
-      </select>
-      <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
-      <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
-      <div id="conversionResult" class="w3-margin-top"></div>
-    </div>
+  <header style="display: none;">
+    <h1>Welcome to SmartCalc World</h1>
+    <p>Click a feature below to get started!</p>
+  </header>
 
-    <div class="feature-category">Factorial (While Loop)</div>
-    <div class="feature-card">
-      <h3>Find Factorial</h3>
-      <input type="number" id="factorialInput" class="w3-input" placeholder="Enter Number">
-      <button class="w3-button w3-teal w3-block" onclick="findFactorial()">Calculate</button>
-      <div id="factorialResult" class="w3-margin-top"></div>
+  <!-- Feature Icons -->
+  <div id="featureContainer" class="feature-container" style="display: none;">
+    <div class="feature-card" onclick="showFeature('conversion')">
+      <img src="https://img.icons8.com/color/50/conversion.png" alt="Conversion Icon">
+      <h3>Unit Conversions</h3>
     </div>
-
-    <div class="feature-category">Sum and Average (First N Natural Numbers)</div>
-    <div class="feature-card">
-      <h3>Calculate Sum and Average</h3>
-      <input type="number" id="sumAverageInput" class="w3-input" placeholder="Enter N">
-      <button class="w3-button w3-teal w3-block" onclick="calculateSumAndAverage()">Calculate</button>
-      <div id="sumAverageResult" class="w3-margin-top"></div>
+    <div class="feature-card" onclick="showFeature('factorial')">
+      <img src="https://img.icons8.com/color/50/calculator.png" alt="Factorial Icon">
+      <h3>Factorial Calculator</h3>
     </div>
-
-    <div class="feature-category">Income Tax Calculator</div>
-    <div class="feature-card">
-      <h3>Calculate Income Tax</h3>
-      <input type="number" id="incomeInput" class="w3-input" placeholder="Enter Income">
-      <button class="w3-button w3-teal w3-block" onclick="calculateIncomeTax()">Calculate</button>
-      <div id="incomeTaxResult" class="w3-margin-top"></div>
+    <div class="feature-card" onclick="showFeature('sumAverage')">
+      <img src="https://img.icons8.com/color/50/average.png" alt="Sum and Average Icon">
+      <h3>Sum & Average</h3>
     </div>
+    <div class="feature-card" onclick="showFeature('incomeTax')">
+      <img src="https://img.icons8.com/color/50/tax.png" alt="Income Tax Icon">
+      <h3>Income Tax</h3>
+    </div>
+    <div class="feature-card" onclick="showFeature('payroll')">
+      <img src="https://img.icons8.com/color/50/payroll.png" alt="Payroll Icon">
+      <h3>Payroll Manager</h3>
+    </div>
+  </div>
 
+  <!-- Feature Content Sections -->
+  <div id="conversion" class="content-section">
+    <button class="back-button" onclick="goBack()">← Back</button>
+    <h2>Unit Conversions</h2>
+    <h3>Choose Conversion Type</h3>
+    <select id="conversionType" class="w3-select">
+      <option value="CtoF">Celsius to Fahrenheit</option>
+      <option value="FtoC">Fahrenheit to Celsius</option>
+      <option value="MtoF">Meters to Feet</option>
+      <option value="FtoM">Feet to Meters</option>
+    </select>
+    <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
+    <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
+    <div id="conversionResult" class="w3-margin-top"></div>
+  </div>
+
+  <div id="factorial" class="content-section">
+    <button class="back-button" onclick="goBack()">← Back</button>
+    <h2>Factorial Calculator</h2>
+    <h3>Find Factorial</h3>
+    <input type="number" id="factorialInput" class="w3-input" placeholder="Enter Number">
+    <button class="w3-button w3-teal w3-block" onclick="findFactorial()">Calculate</button>
+    <div id="factorialResult" class="w3-margin-top"></div>
+  </div>
+
+  <div id="sumAverage" class="content-section">
+    <button class="back-button" onclick="goBack()">← Back</button>
+    <h2>Sum and Average Calculator</h2>
+    <h3>Calculate Sum and Average</h3>
+    <input type="number" id="sumAverageInput" class="w3-input" placeholder="Enter N">
+    <button class="w3-button w3-teal w3-block" onclick="calculateSumAndAverage()">Calculate</button>
+    <div id="sumAverageResult" class="w3-margin-top"></div>
+  </div>
+
+  <div id="incomeTax" class="content-section">
+    <button class="back-button" onclick="goBack()">← Back</button>
+    <h2>Income Tax Calculator</h2>
+    <input type="number" id="incomeInput" class="w3-input" placeholder="Enter Income">
+    <button class="w3-button w3-teal w3-block" onclick="calculateIncomeTax()">Calculate Tax</button>
+    <div id="incomeTaxResult" class="w3-margin-top"></div>
+  </div>
+
+  <div id="payroll" class="content-section">
+    <button class="back-button" onclick="goBack()">← Back</button>
+    <h2>Payroll Manager</h2>
     <div class="feature-category">Payroll Calculator</div>
-    <div class="feature-card">
-      <div class="feature-category">Payroll Calculator</div>
     <div class="feature-card">
       <h3>Manage Payroll</h3>
       <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
@@ -240,21 +336,39 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2024 SmartCalc World</p>
-   
+    <p>Designed by SmartCalc World Team. &copy; 2024</p>
+    <p>
+      <a href="#">Privacy Policy</a>
+      |
+      <a href="#">Contact Us</a>
+    </p>
   </footer>
+
   <script>
+    // Function to show the main content (header and feature container)
     function showMainContent() {
-      document.getElementById('introScreen').classList.add('hidden');
-      document.getElementById('mainContent').style.display = 'block';
+      document.getElementById('introScreen').style.display = 'none';
+      document.querySelector('header').style.display = 'block';
+      document.getElementById('featureContainer').style.display = 'grid';
     }
 
-    function showIntroScreen() {
-      document.getElementById('mainContent').style.display = 'none';
-      document.getElementById('introScreen').classList.remove('hidden');
+    // Function to display a specific feature section
+    function showFeature(feature) {
+      document.getElementById('featureContainer').style.display = 'none';
+      document.getElementById(feature).style.display = 'block';
     }
 
-    function performConversion() {
+    // Function to go back to the feature container from a feature section
+    function goBack() {
+      const activeFeature = document.querySelector('.content-section[style*="display: block"]');
+      if (activeFeature) {
+        activeFeature.style.display = 'none';
+        document.getElementById('featureContainer').style.display = 'grid';
+      }
+    }
+
+    // Placeholder functions for feature calculators (to be filled in)
+     function performConversion() {
       const conversionType = document.getElementById('conversionType').value;
       const input = parseFloat(document.getElementById('conversionInput').value);
       let result;
