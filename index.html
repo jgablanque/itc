@@ -14,91 +14,98 @@
       padding: 0;
       background: linear-gradient(135deg, #1e1e30, #2a2a45);
       color: #f3f3f3;
-      overflow-x: hidden;
-    }
-    .hidden { display: none; }
-
-    /* Header Styling */
-    h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #00adb5;
-      margin-bottom: 10px;
-    }
-    p {
-      text-align: center;
-      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 10px;
     }
 
-    /* Container Styling */
-    .container {
-      margin: 20px auto;
+    .hidden {
+      display: none;
+    }
+
+    /* Intro Screen Styling */
+    #introScreen {
+      text-align: center;
+      width: 100%;
       max-width: 600px;
       padding: 20px;
       border-radius: 10px;
-      background: rgba(30, 30, 47, 0.9);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    /* Feature Cards */
-    .feature-card {
+    #introScreen h2 {
+      font-size: 2rem;
       margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 5px;
-      background-color: rgba(42, 42, 63, 0.95);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* Buttons */
-    .w3-button {
+    #introScreen p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .w3-button-intro {
       background-color: #00adb5;
       color: white;
       border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2rem;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .w3-button:hover {
+
+    .w3-button-intro:hover {
       background-color: #007d82;
       box-shadow: 0 4px 10px rgba(0, 173, 181, 0.5);
     }
 
-    /* Menu Bar */
-    .menu {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #333;
-      color: #fff;
+    /* Main Content Styling */
+    #mainContent {
+      display: none;
       text-align: center;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-    }
-    .menu button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(30, 30, 47, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 800px;
     }
 
-    /* Background Animation */
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
+    .feature-category {
+      font-size: 1.5rem;
+      margin: 20px 0 10px;
+      color: #00adb5;
+    }
+
+    .feature-card {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature-card input,
+    .feature-card select {
       width: 100%;
-      height: 100%;
-      background-image: url('https://via.placeholder.com/150?text=Calculator');
-      background-size: 150px;
-      background-repeat: repeat;
-      opacity: 0.1;
-      z-index: -1;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background-color: #1e1e30;
+      color: #f3f3f3;
+    }
+
+    .feature-card button {
+      margin-top: 10px;
     }
 
     /* Footer */
@@ -109,74 +116,76 @@
       background-color: #1e1e30;
       color: #00adb5;
     }
+
     footer a {
       color: #00adb5;
       margin: 0 10px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       transition: color 0.3s ease;
     }
+
     footer a:hover {
       color: #007d82;
     }
-  
-    /* Mobile Optimization */
-    @media (max-width: 768px) {
-      .container {
-        padding: 15px;
-      }
-      .w3-button {
-        font-size: 14px;
-        padding: 8px;
-      }
-      .menu button {
-        font-size: 14px;
-        padding: 8px;
-      }
-      #activityLog {
-        font-size: 14px;
-        padding: 8px;
-      }
-      input, select {
-        font-size: 14px;
-        padding: 10px;
-      }
-    }
 
-    @media (max-width: 480px) {
-      h2 {
-        font-size: 20px;
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      #introScreen h2 {
+        font-size: 1.5rem;
       }
-      .menu button {
-        font-size: 12px;
+
+      #introScreen p,
+      #mainContent p {
+        font-size: 0.9rem;
       }
-      .feature-card {
-        padding: 10px;
+
+      .w3-button-intro {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+
+      #mainContent h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Intro Screen -->
+  <div id="introScreen">
+    <h2>Welcome to SmartCalc World!</h2>
+    <p>Check out my awesome ITC project—SmartCalc World! 🚀</p>
+    <p>This website is designed to be your all-in-one hub for everyday calculations, whether you're converting units, managing payroll, calculating taxes, or exploring mathematical curiosities. It's user-friendly, mobile-responsive, and built with a sleek, modern design that adapts to any device.</p>
+    </ul>
+    <p>Click below to start exploring!</p>
+    <button class="w3-button-intro" onclick="showMainContent()">Click Here to Enter</button>
+    <p>Explore these exciting features:</p>
+    <ul>
+      <li><strong>Unit Conversions</strong> – Convert between Celsius and Fahrenheit or meters and feet.</li>
+      <li><strong>Factorial Calculator</strong> – Compute the factorial of any positive number.</li>
+      <li><strong>Sum and Average Calculator</strong> – Calculate the sum and average of the first N natural numbers.</li>
+      <li><strong>Income Tax Calculator</strong> – Understand your finances with Philippine tax rules.</li>
+      <li><strong>Payroll Manager</strong> – Streamline payroll calculations and manage employee data.</li>
+      <li><strong>Activity Log</strong> – Keep track of your calculations in real-time.</li>
+    
+  </div>
+
+  <!-- Main Content -->
   <div id="mainContent">
-    <div class="container">
-      <h2>Welcome to SmartCalc World!</h2>
-      <p>Your go-to hub for calculators, conversions, and more.</p>
+    <div class="feature-category">Unit Conversions</div>
+    <div class="feature-card">
+      <h3>Choose Conversion Type</h3>
+      <select id="conversionType" class="w3-select">
+        <option value="CtoF">Celsius to Fahrenheit</option>
+        <option value="FtoC">Fahrenheit to Celsius</option>
+        <option value="MtoF">Meters to Feet</option>
+        <option value="FtoM">Feet to Meters</option>
+      </select>
+      <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
+      <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
+      <div id="conversionResult" class="w3-margin-top"></div>
+    </div>
 
-      <!-- Conversion Features -->
-      <div class="feature-category">Unit Conversions</div>
-      <div class="feature-card">
-        <h3>Choose Conversion Type</h3>
-        <select id="conversionType" class="w3-select">
-          <option value="CtoF">Celsius to Fahrenheit</option>
-          <option value="FtoC">Fahrenheit to Celsius</option>
-          <option value="MtoF">Meters to Feet</option>
-          <option value="FtoM">Feet to Meters</option>
-        </select>
-        <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
-        <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
-        <div id="conversionResult" class="w3-margin-top"></div>
-      </div>
-
-       <!-- Additional Features -->
     <div class="feature-category">Factorial (While Loop)</div>
     <div class="feature-card">
       <h3>Find Factorial</h3>
@@ -201,8 +210,9 @@
       <div id="incomeTaxResult" class="w3-margin-top"></div>
     </div>
 
-    <!-- Payroll Calculator -->
     <div class="feature-category">Payroll Calculator</div>
+    <div class="feature-card">
+      <div class="feature-category">Payroll Calculator</div>
     <div class="feature-card">
       <h3>Manage Payroll</h3>
       <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
@@ -228,190 +238,160 @@
   </div>
 </div>
 
-  </div>
-</div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 SmartCalc World</p>
+   
+  </footer>
+  <script>
+    function showMainContent() {
+      document.getElementById('introScreen').classList.add('hidden');
+      document.getElementById('mainContent').style.display = 'block';
+    }
 
-<div id="menu" class="menu">
-  <button onclick="toggleActivityLog()">Activity Log</button>
-</div>
+    function showIntroScreen() {
+      document.getElementById('mainContent').style.display = 'none';
+      document.getElementById('introScreen').classList.remove('hidden');
+    }
 
-<!-- Activity Log -->
-<div id="activityLog" class="hidden">
-  <h3>Activity Log</h3>
-  <ul id="activityLogList"></ul>
-</div>
+    function performConversion() {
+      const conversionType = document.getElementById('conversionType').value;
+      const input = parseFloat(document.getElementById('conversionInput').value);
+      let result;
 
-<script>
-   let activityLog = [];
+      if (isNaN(input)) {
+        alert('Please enter a valid number');
+        return;
+      }
 
-  let payrollList = [];
-
-
-  // Conversion Function
-  function performConversion() {
-    const type = document.getElementById("conversionType").value;
-    const value = parseFloat(document.getElementById("conversionInput").value);
-    let result = "";
-
-    if (isNaN(value)) {
-      result = "Please enter a valid number.";
-    } else {
-      switch (type) {
-        case "CtoF":
-          result = `${value} °C = ${(value * 9/5 + 32).toFixed(2)} °F`;
+      switch (conversionType) {
+        case 'CtoF':
+          result = (input * 9/5) + 32;
+          document.getElementById('conversionResult').innerText = `${input} °C = ${result.toFixed(2)} °F`;
           break;
-        case "FtoC":
-          result = `${value} °F = ${((value - 32) * 5/9).toFixed(2)} °C`;
+        case 'FtoC':
+          result = (input - 32) * 5/9;
+          document.getElementById('conversionResult').innerText = `${input} °F = ${result.toFixed(2)} °C`;
           break;
-        case "MtoF":
-          result = `${value} m = ${(value * 3.28084).toFixed(2)} ft`;
+        case 'MtoF':
+          result = input * 3.28084;
+          document.getElementById('conversionResult').innerText = `${input} m = ${result.toFixed(2)} ft`;
           break;
-        case "FtoM":
-          result = `${value} ft = ${(value / 3.28084).toFixed(2)} m`;
+        case 'FtoM':
+          result = input / 3.28084;
+          document.getElementById('conversionResult').innerText = `${input} ft = ${result.toFixed(2)} m`;
           break;
+        default:
+          document.getElementById('conversionResult').innerText = '';
       }
     }
-    document.getElementById("conversionResult").innerText = result;
-  }
 
-  // Factorial Function
-  function findFactorial() {
-    const number = parseInt(document.getElementById("factorialInput").value);
-    if (isNaN(number) || number < 0) {
-      document.getElementById("factorialResult").innerText = "Enter a positive number.";
-      return;
+    function findFactorial() {
+      const num = parseInt(document.getElementById('factorialInput').value);
+      if (isNaN(num) || num < 0) {
+        alert('Please enter a non-negative integer');
+        return;
+      }
+
+      let factorial = 1;
+      for (let i = 1; i <= num; i++) {
+        factorial *= i;
+      }
+      document.getElementById('factorialResult').innerText = `Factorial of ${num} is ${factorial}`;
     }
-    let factorial = 1;
-    for (let i = 1; i <= number; i++) factorial *= i;
-    document.getElementById("factorialResult").innerText = `Factorial: ${factorial}`;
-  }
- // Sum and Average Function
-  function calculateSumAndAverage() {
-    const n = parseInt(document.getElementById("sumAverageInput").value);
-    if (!isNaN(n) && n > 0) {
+
+    function calculateSumAndAverage() {
+      const n = parseInt(document.getElementById('sumAverageInput').value);
+      if (isNaN(n) || n <= 0) {
+        alert('Please enter a positive integer');
+        return;
+      }
+
       let sum = 0;
       for (let i = 1; i <= n; i++) {
         sum += i;
       }
       const average = sum / n;
-      document.getElementById("sumAverageResult").textContent = `Sum: ${sum}, Average: ${average}`;
-      activityLog.push(`Sum and Average (N=${n}): Sum=${sum}, Average=${average}`);
-    } else {
-      document.getElementById("sumAverageResult").textContent = "Please enter a positive integer for N.";
+      document.getElementById('sumAverageResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
     }
-  }
 
-  // Philippine Income Tax Calculation Function (Updated for Philippine Tax Rules)
-  function calculateIncomeTax() {
-    const income = parseFloat(document.getElementById("incomeInput").value);
-    if (!isNaN(income) && income >= 0) {
+    function calculateIncomeTax() {
+      const income = parseFloat(document.getElementById('incomeInput').value);
+      if (isNaN(income) || income < 0) {
+        alert('Please enter a valid income');
+        return;
+      }
+
       let tax = 0;
       if (income <= 250000) {
         tax = 0;
       } else if (income <= 400000) {
-        tax = (income - 250000) * 0.2;
+        tax = 0.2 * (income - 250000);
       } else if (income <= 800000) {
-        tax = 30000 + (income - 400000) * 0.25;
+        tax = 30000 + 0.25 * (income - 400000);
       } else if (income <= 2000000) {
-        tax = 130000 + (income - 800000) * 0.3;
-      } else if (income <= 8000000) {
-        tax = 490000 + (income - 2000000) * 0.32;
+        tax = 130000 + 0.3 * (income - 800000);
       } else {
-        tax = 2410000 + (income - 8000000) * 0.35;
+        tax = 490000 + 0.32 * (income - 2000000);
       }
-      document.getElementById("incomeTaxResult").textContent = `Income Tax: P${tax.toFixed(2)}`;
-      activityLog.push(`Income Tax for P${income}: P${tax.toFixed(2)}`);
-    } else {
-      document.getElementById("incomeTaxResult").textContent = "Invalid input.";
+      document.getElementById('incomeTaxResult').innerText = `Income Tax: PHP ${tax.toFixed(2)}`;
     }
-  }
-  // Add Employee to Payroll
-function addEmployee() {
-  const name = document.getElementById("employeeName").value.trim();
-  const daysWorked = parseInt(document.getElementById("daysWorked").value);
-  const dailyRate = parseFloat(document.getElementById("dailyRate").value);
-  const deduction = parseFloat(document.getElementById("deductionAmount").value);
 
-  if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deduction)) {
-    alert("Please fill in all fields correctly.");
+    function addEmployee() {
+  const name = document.getElementById('employeeName').value.trim();
+  const daysWorked = parseInt(document.getElementById('daysWorked').value);
+  const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+  const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
+
+  if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount) || daysWorked <= 0 || dailyRate <= 0) {
+    alert('Please fill out all fields with valid values');
     return;
   }
 
+  // Calculate payroll details
   const grossPay = daysWorked * dailyRate;
-  const netPay = grossPay - deduction;
+  const netPay = grossPay - deductionAmount;
 
-  payrollList.push({ name, daysWorked, dailyRate, grossPay, deduction, netPay });
-  updatePayrollTable();
-  clearInputFields();
+  // Create a new row for the table
+  const tableBody = document.getElementById('payrollTableBody');
+  const rowCount = tableBody.rows.length + 1;
+  const row = tableBody.insertRow();
+
+  // Insert cells for each detail
+  row.insertCell(0).innerText = rowCount; // No.
+  row.insertCell(1).innerText = name; // Name
+  row.insertCell(2).innerText = daysWorked; // Days Worked
+  row.insertCell(3).innerText = dailyRate.toFixed(2); // Daily Rate
+  row.insertCell(4).innerText = grossPay.toFixed(2); // Gross Pay
+  row.insertCell(5).innerText = deductionAmount.toFixed(2); // Deduction
+  row.insertCell(6).innerText = netPay.toFixed(2); // Net Pay
+
+  // Add a "Remove" button to the row
+  const removeCell = row.insertCell(7);
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.classList.add('w3-button', 'w3-red');
+  removeButton.onclick = function() {
+    tableBody.deleteRow(row.rowIndex - 1);
+    updateRowNumbers();
+  };
+  removeCell.appendChild(removeButton);
+
+  // Clear input fields after adding employee
+  document.getElementById('employeeName').value = '';
+  document.getElementById('daysWorked').value = '';
+  document.getElementById('dailyRate').value = '';
+  document.getElementById('deductionAmount').value = '';
 }
 
-// Delete Employee by Index
-function deleteEmployee(index) {
-  if (index < 0 || index >= payrollList.length) {
-    alert("Invalid employee index.");
-    return;
+// Function to update row numbers after removal
+function updateRowNumbers() {
+  const tableBody = document.getElementById('payrollTableBody');
+  for (let i = 0; i < tableBody.rows.length; i++) {
+    tableBody.rows[i].cells[0].innerText = i + 1; // Update "No." column
   }
-  payrollList.splice(index, 1);
-  updatePayrollTable();
-}
-  
-
-  // Update Payroll Table
-function updatePayrollTable() {
-  const tableBody = document.getElementById("payrollTableBody");
-  tableBody.innerHTML = "";
-
-  payrollList.forEach((item, index) => {
-    const row = `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${item.name}</td>
-        <td>${item.daysWorked}</td>
-        <td>${item.dailyRate.toFixed(2)}</td>
-        <td>${item.grossPay.toFixed(2)}</td>
-        <td>${item.deduction.toFixed(2)}</td>
-        <td>${item.netPay.toFixed(2)}</td>
-        <td><button onclick="deleteEmployee(${index})" class="w3-button w3-red w3-small">Delete</button></td>
-      </tr>`;
-    tableBody.innerHTML += row;
-  });
 }
 
-// Clear Input Fields after Adding
-function clearInputFields() {
-  document.getElementById("employeeName").value = "";
-  document.getElementById("daysWorked").value = "";
-  document.getElementById("dailyRate").value = "";
-  document.getElementById("deductionAmount").value = "";
-}
-  // Toggle Activity Log
-  function toggleActivityLog() {
-    const log = document.getElementById("activityLog");
-    log.classList.toggle("hidden");
-    if (!log.classList.contains("hidden")) {
-      updateActivityLog();
-    }
-  }
-
-  // Update Activity Log
-  function updateActivityLog() {
-    const logList = document.getElementById("activityLogList");
-    logList.innerHTML = "";
-    activityLog.forEach(log => {
-      const listItem = document.createElement("li");
-      listItem.textContent = log;
-      logList.appendChild(listItem);
-    });
-  }
-
-  
-</script>
-
-  <footer>
-    <p>© 2024 SmartCalc World</p>
-    <a href="https://twitter.com/" target="_blank">Twitter</a>
-    <a href="https://facebook.com/" target="_blank">Facebook</a>
-    <a href="https://instagram.com/" target="_blank">Instagram</a>
-  </footer>
+  </script>
 </body>
 </html>
