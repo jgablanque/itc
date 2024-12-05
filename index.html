@@ -4,17 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SmartCalc World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     /* General Styling */
     body {
-      font-family: "Arial", sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #121212;
+      background: linear-gradient(135deg, #1e1e30, #2a2a45);
       color: #f3f3f3;
+      overflow-x: hidden;
     }
     .hidden { display: none; }
+
+    /* Header Styling */
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #00adb5;
+      margin-bottom: 10px;
+    }
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+    }
 
     /* Container Styling */
     .container {
@@ -22,8 +36,8 @@
       max-width: 600px;
       padding: 20px;
       border-radius: 10px;
-      background: #1e1e2f;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      background: rgba(30, 30, 47, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     /* Feature Cards */
@@ -31,7 +45,7 @@
       margin-bottom: 20px;
       padding: 15px;
       border-radius: 5px;
-      background-color: #2a2a3f;
+      background-color: rgba(42, 42, 63, 0.95);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .feature-card:hover {
@@ -39,16 +53,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* Feature Category Titles */
-    .feature-category {
-      margin-top: 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border-bottom: 2px solid #444;
-      padding-bottom: 5px;
-    }
-
-    /* Button Styles */
+    /* Buttons */
     .w3-button {
       background-color: #00adb5;
       color: white;
@@ -81,52 +86,97 @@
       cursor: pointer;
     }
 
-    /* Activity Log */
-    #activityLog {
-      max-height: 200px;
-      overflow-y: scroll;
-      padding: 10px;
-      background-color: #2a2a3f;
-      border-radius: 5px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /* Background Animation */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/150?text=Calculator');
+      background-size: 150px;
+      background-repeat: repeat;
+      opacity: 0.1;
+      z-index: -1;
     }
 
-    /* Tables */
-    .w3-table {
-      background-color: #2a2a3f;
-      color: white;
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+      background-color: #1e1e30;
+      color: #00adb5;
     }
-    .w3-light-grey {
-      background-color: #333 !important;
+    footer a {
+      color: #00adb5;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
     }
-    .w3-button.w3-red {
-      background-color: #ff5e5e;
+    footer a:hover {
+      color: #007d82;
+    }
+  
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      .w3-button {
+        font-size: 14px;
+        padding: 8px;
+      }
+      .menu button {
+        font-size: 14px;
+        padding: 8px;
+      }
+      #activityLog {
+        font-size: 14px;
+        padding: 8px;
+      }
+      input, select {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 20px;
+      }
+      .menu button {
+        font-size: 12px;
+      }
+      .feature-card {
+        padding: 10px;
+      }
     }
   </style>
 </head>
 <body>
+  <div id="mainContent">
+    <div class="container">
+      <h2>Welcome to SmartCalc World!</h2>
+      <p>Your go-to hub for calculators, conversions, and more.</p>
 
-<div id="mainContent">
-  <div class="container">
-    <h2>Welcome to SmartCalc World!</h2>
-    <p>Your go-to hub for calculators, conversions, and more.</p>
+      <!-- Conversion Features -->
+      <div class="feature-category">Unit Conversions</div>
+      <div class="feature-card">
+        <h3>Choose Conversion Type</h3>
+        <select id="conversionType" class="w3-select">
+          <option value="CtoF">Celsius to Fahrenheit</option>
+          <option value="FtoC">Fahrenheit to Celsius</option>
+          <option value="MtoF">Meters to Feet</option>
+          <option value="FtoM">Feet to Meters</option>
+        </select>
+        <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
+        <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
+        <div id="conversionResult" class="w3-margin-top"></div>
+      </div>
 
-    <!-- Conversion Features -->
-    <div class="feature-category">Unit Conversions</div>
-    <div class="feature-card">
-      <h3>Choose Conversion Type</h3>
-      <select id="conversionType" class="w3-select">
-        <option value="CtoF">Celsius to Fahrenheit</option>
-        <option value="FtoC">Fahrenheit to Celsius</option>
-        <option value="MtoF">Meters to Feet</option>
-        <option value="FtoM">Feet to Meters</option>
-      </select>
-      <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
-      <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
-      <div id="conversionResult" class="w3-margin-top"></div>
-    </div>
-
-   <!-- Additional Features -->
+       <!-- Additional Features -->
     <div class="feature-category">Factorial (While Loop)</div>
     <div class="feature-card">
       <h3>Find Factorial</h3>
@@ -357,5 +407,11 @@ function clearInputFields() {
   
 </script>
 
+  <footer>
+    <p>© 2024 SmartCalc World</p>
+    <a href="https://twitter.com/" target="_blank">Twitter</a>
+    <a href="https://facebook.com/" target="_blank">Facebook</a>
+    <a href="https://instagram.com/" target="_blank">Instagram</a>
+  </footer>
 </body>
 </html>
