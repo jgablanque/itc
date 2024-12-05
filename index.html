@@ -62,24 +62,10 @@
       border: 1px solid #ddd;
       border-radius: 5px;
     }
-    @media only screen and (max-width: 600px) {
-      .container {
-        width: 90%;
-        padding: 10px;
-      }
-      .feature-card {
-        padding: 10px;
-      }
-      .menu {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
   </style>
 </head>
 <body>
 
-<!-- Main Content -->
 <div id="mainContent">
   <div class="container">
     <h2>Welcome, User!</h2>
@@ -99,8 +85,7 @@
       <button class="w3-button w3-teal w3-block" onclick="performConversion()">Convert</button>
       <div id="conversionResult" class="w3-margin-top"></div>
     </div>
-
-    <!-- Additional Features -->
+  <!-- Additional Features -->
     <div class="feature-category">Factorial (While Loop)</div>
     <div class="feature-card">
       <h3>Find Factorial</h3>
@@ -125,18 +110,33 @@
       <div id="incomeTaxResult" class="w3-margin-top"></div>
     </div>
 
+    <!-- Payroll Calculator -->
     <div class="feature-category">Payroll Calculator</div>
     <div class="feature-card">
-      <h3>Calculate Payroll</h3>
-      <input type="number" id="hoursWorked" class="w3-input" placeholder="Hours Worked">
-      <input type="number" id="payPerHour" class="w3-input" placeholder="Pay Per Hour">
-      <button class="w3-button w3-teal w3-block" onclick="calculatePayroll()">Calculate Payroll</button>
-      <div id="payrollResult" class="w3-margin-top"></div>
+      <h3>Manage Payroll</h3>
+      <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
+      <input type="number" id="daysWorked" class="w3-input w3-margin-top" placeholder="Days Worked">
+      <input type="number" id="dailyRate" class="w3-input w3-margin-top" placeholder="Daily Rate">
+      <input type="number" id="deductionAmount" class="w3-input w3-margin-top" placeholder="Deduction Amount">
+      <button class="w3-button w3-teal w3-block w3-margin-top" onclick="addEmployee()">Add Employee</button>
+      <table class="w3-table w3-striped w3-bordered w3-margin-top">
+        <thead>
+          <tr class="w3-light-grey">
+            <th>No.</th>
+            <th>Name</th>
+            <th>Days Worked</th>
+            <th>Daily Rate</th>
+            <th>Gross Pay</th>
+            <th>Deduction</th>
+            <th>Net Pay</th>
+          </tr>
+        </thead>
+        <tbody id="payrollTableBody"></tbody>
+      </table>
     </div>
   </div>
 </div>
 
-<!-- Menu -->
 <div id="menu" class="menu">
   <button onclick="toggleActivityLog()">Activity Log</button>
 </div>
@@ -150,50 +150,48 @@
 <script>
   let activityLog = [];
 
+  let payrollList = [];
+
+
   // Conversion Function
   function performConversion() {
     const type = document.getElementById("conversionType").value;
     const value = parseFloat(document.getElementById("conversionInput").value);
     let result = "";
-    if (!isNaN(value)) {
+
+    if (isNaN(value)) {
+      result = "Please enter a valid number.";
+    } else {
       switch (type) {
         case "CtoF":
-          result = `${value}°C = ${(value * 9) / 5 + 32}°F`;
+          result = `${value} °C = ${(value * 9/5 + 32).toFixed(2)} °F`;
           break;
         case "FtoC":
-          result = `${value}°F = ${((value - 32) * 5) / 9}°C`;
+          result = `${value} °F = ${((value - 32) * 5/9).toFixed(2)} °C`;
           break;
         case "MtoF":
-          result = `${value} meters = ${(value * 3.28084).toFixed(2)} feet`;
+          result = `${value} m = ${(value * 3.28084).toFixed(2)} ft`;
           break;
         case "FtoM":
-          result = `${value} feet = ${(value / 3.28084).toFixed(2)} meters`;
+          result = `${value} ft = ${(value / 3.28084).toFixed(2)} m`;
           break;
       }
-      document.getElementById("conversionResult").textContent = result;
-      activityLog.push(`Conversion (${type}): ${result}`);
-    } else {
-      document.getElementById("conversionResult").textContent = "Invalid input.";
     }
+    document.getElementById("conversionResult").innerText = result;
   }
 
   // Factorial Function
   function findFactorial() {
-    const num = parseInt(document.getElementById("factorialInput").value);
-    if (!isNaN(num) && num >= 0) {
-      let result = 1;
-      let i = 1;
-      while (i <= num) {
-        result *= i++;
-      }
-      document.getElementById("factorialResult").textContent = `Factorial: ${result}`;
-      activityLog.push(`Factorial of ${num}: ${result}`);
-    } else {
-      document.getElementById("factorialResult").textContent = "Invalid input.";
+    const number = parseInt(document.getElementById("factorialInput").value);
+    if (isNaN(number) || number < 0) {
+      document.getElementById("factorialResult").innerText = "Enter a positive number.";
+      return;
     }
+    let factorial = 1;
+    for (let i = 1; i <= number; i++) factorial *= i;
+    document.getElementById("factorialResult").innerText = `Factorial: ${factorial}`;
   }
-
-  // Sum and Average Function
+ // Sum and Average Function
   function calculateSumAndAverage() {
     const n = parseInt(document.getElementById("sumAverageInput").value);
     if (!isNaN(n) && n > 0) {
@@ -233,20 +231,65 @@
       document.getElementById("incomeTaxResult").textContent = "Invalid input.";
     }
   }
+  // Add Employee to Payroll
+function addEmployee() {
+  const name = document.getElementById("employeeName").value.trim();
+  const daysWorked = parseInt(document.getElementById("daysWorked").value);
+  const dailyRate = parseFloat(document.getElementById("dailyRate").value);
+  const deduction = parseFloat(document.getElementById("deductionAmount").value);
 
-  // Payroll Calculation Function
-  function calculatePayroll() {
-    const hoursWorked = parseFloat(document.getElementById("hoursWorked").value);
-    const payPerHour = parseFloat(document.getElementById("payPerHour").value);
-    if (!isNaN(hoursWorked) && !isNaN(payPerHour) && hoursWorked > 0 && payPerHour > 0) {
-      const payroll = hoursWorked * payPerHour;
-      document.getElementById("payrollResult").textContent = `Payroll: P${payroll.toFixed(2)}`;
-      activityLog.push(`Payroll for ${hoursWorked} hours at P${payPerHour} per hour: P${payroll.toFixed(2)}`);
-    } else {
-      document.getElementById("payrollResult").textContent = "Invalid input.";
-    }
+  if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deduction)) {
+    alert("Please fill in all fields correctly.");
+    return;
   }
 
+  const grossPay = daysWorked * dailyRate;
+  const netPay = grossPay - deduction;
+
+  payrollList.push({ name, daysWorked, dailyRate, grossPay, deduction, netPay });
+  updatePayrollTable();
+  clearInputFields();
+}
+
+// Delete Employee by Index
+function deleteEmployee(index) {
+  if (index < 0 || index >= payrollList.length) {
+    alert("Invalid employee index.");
+    return;
+  }
+  payrollList.splice(index, 1);
+  updatePayrollTable();
+}
+  
+
+  // Update Payroll Table
+function updatePayrollTable() {
+  const tableBody = document.getElementById("payrollTableBody");
+  tableBody.innerHTML = "";
+
+  payrollList.forEach((item, index) => {
+    const row = `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${item.name}</td>
+        <td>${item.daysWorked}</td>
+        <td>${item.dailyRate.toFixed(2)}</td>
+        <td>${item.grossPay.toFixed(2)}</td>
+        <td>${item.deduction.toFixed(2)}</td>
+        <td>${item.netPay.toFixed(2)}</td>
+        <td><button onclick="deleteEmployee(${index})" class="w3-button w3-red w3-small">Delete</button></td>
+      </tr>`;
+    tableBody.innerHTML += row;
+  });
+}
+
+// Clear Input Fields after Adding
+function clearInputFields() {
+  document.getElementById("employeeName").value = "";
+  document.getElementById("daysWorked").value = "";
+  document.getElementById("dailyRate").value = "";
+  document.getElementById("deductionAmount").value = "";
+}
   // Toggle Activity Log
   function toggleActivityLog() {
     const log = document.getElementById("activityLog");
