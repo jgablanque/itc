@@ -273,14 +273,35 @@ footer p {
     <div id="incomeTaxResult" class="w3-margin-top"></div>
   </div>
 
-  <div id="payroll" class="content-section">
-    <button class="back-button" onclick="goBack()">← Back</button>
-    <h2>Payroll Manager</h2>
-    <input type="number" id="hoursWorked" class="w3-input" placeholder="Enter Hours Worked">
-    <input type="number" id="hourlyRate" class="w3-input w3-margin-top" placeholder="Enter Hourly Rate">
-    <button class="w3-button w3-block" onclick="calculatePayroll()">Calculate Payroll</button>
-    <div id="payrollResult" class="w3-margin-top"></div>
+  <div id="payroll" class="feature-details">
+      <button class="back-button" onclick="goBack()">← Back</button>
+      <h2>Payroll Manager</h2>
+      <div class="feature-category">Payroll Calculator</div>
+    <div class="feature-card">
+      <h3>Manage Payroll</h3>
+      <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
+      <input type="number" id="daysWorked" class="w3-input w3-margin-top" placeholder="Days Worked">
+      <input type="number" id="dailyRate" class="w3-input w3-margin-top" placeholder="Daily Rate">
+      <input type="number" id="deductionAmount" class="w3-input w3-margin-top" placeholder="Deduction Amount">
+      <button class="w3-button w3-teal w3-block w3-margin-top" onclick="addEmployee()">Add Employee</button>
+      <table class="w3-table w3-striped w3-bordered w3-margin-top">
+        <thead>
+          <tr class="w3-light-grey">
+            <th>No.</th>
+            <th>Name</th>
+            <th>Days Worked</th>
+            <th>Daily Rate</th>
+            <th>Gross Pay</th>
+            <th>Deduction</th>
+            <th>Net Pay</th>
+          </tr>
+        </thead>
+        <tbody id="payrollTableBody"></tbody>
+      </table>
+    </div>
   </div>
+</div>
+
 
   <footer>
     <p> Made by Jedrik Maico Ablanque 🚀</p>
@@ -392,17 +413,61 @@ footer p {
 
 
     // Payroll calculator
-    function calculatePayroll() {
-      const hours = parseFloat(document.getElementById('hoursWorked').value);
-      const rate = parseFloat(document.getElementById('hourlyRate').value);
-      if (isNaN(hours) || isNaN(rate)) {
-        alert('Please enter valid numbers.');
-        return;
-      }
+ function addEmployee() {
+  const name = document.getElementById('employeeName').value.trim();
+  const daysWorked = parseInt(document.getElementById('daysWorked').value);
+  const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+  const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
 
-      const payroll = hours * rate;
-      document.getElementById('payrollResult').innerText = `Total Payroll: $${payroll.toFixed(2)}`;
-    }
+  if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount) || daysWorked <= 0 || dailyRate <= 0) {
+    alert('Please fill out all fields with valid values');
+    return;
+  }
+
+  // Calculate payroll details
+  const grossPay = daysWorked * dailyRate;
+  const netPay = grossPay - deductionAmount;
+
+  // Create a new row for the table
+  const tableBody = document.getElementById('payrollTableBody');
+  const rowCount = tableBody.rows.length + 1;
+  const row = tableBody.insertRow();
+
+  // Insert cells for each detail
+  row.insertCell(0).innerText = rowCount; // No.
+  row.insertCell(1).innerText = name; // Name
+  row.insertCell(2).innerText = daysWorked; // Days Worked
+  row.insertCell(3).innerText = dailyRate.toFixed(2); // Daily Rate
+  row.insertCell(4).innerText = grossPay.toFixed(2); // Gross Pay
+  row.insertCell(5).innerText = deductionAmount.toFixed(2); // Deduction
+  row.insertCell(6).innerText = netPay.toFixed(2); // Net Pay
+
+  // Add a "Remove" button to the row
+  const removeCell = row.insertCell(7);
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.classList.add('w3-button', 'w3-red');
+  removeButton.onclick = function() {
+    tableBody.deleteRow(row.rowIndex - 1);
+    updateRowNumbers();
+  };
+  removeCell.appendChild(removeButton);
+
+  // Clear input fields after adding employee
+  document.getElementById('employeeName').value = '';
+  document.getElementById('daysWorked').value = '';
+  document.getElementById('dailyRate').value = '';
+  document.getElementById('deductionAmount').value = '';
+}
+
+// Function to update row numbers after removal
+function updateRowNumbers() {
+  const tableBody = document.getElementById('payrollTableBody');
+  for (let i = 0; i < tableBody.rows.length; i++) {
+    tableBody.rows[i].cells[0].innerText = i + 1; // Update "No." column
+  }
+}
+
   </script>
 </body>
 </html>
