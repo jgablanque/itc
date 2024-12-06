@@ -273,13 +273,10 @@ footer p {
     <div id="incomeTaxResult" class="w3-margin-top"></div>
   </div>
 
-  <div id="payroll" class="feature-details">
-      <button class="back-button" onclick="goBack()">← Back</button>
-      <h2>Payroll Manager</h2>
-      <div class="feature-category">Payroll Calculator</div>
-    <div class="feature-card">
-      <h3>Manage Payroll</h3>
-      <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
+  <div id="payroll" class="content-section">
+    <button class="back-button" onclick="goBack()">← Back</button>
+    <h2>Payroll Manager</h2>
+    <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
       <input type="number" id="daysWorked" class="w3-input w3-margin-top" placeholder="Days Worked">
       <input type="number" id="dailyRate" class="w3-input w3-margin-top" placeholder="Daily Rate">
       <input type="number" id="deductionAmount" class="w3-input w3-margin-top" placeholder="Deduction Amount">
@@ -301,8 +298,6 @@ footer p {
     </div>
   </div>
 </div>
-
-
   <footer>
     <p> Made by Jedrik Maico Ablanque 🚀</p>
   </footer>
@@ -333,32 +328,28 @@ footer p {
       document.body.classList.toggle('light-mode');
     }
 
-    // Conversion Function
-  function performConversion() {
-    const type = document.getElementById("conversionType").value;
-    const value = parseFloat(document.getElementById("conversionInput").value);
-    let result = "";
-    if (!isNaN(value)) {
-      switch (type) {
-        case "CtoF":
-          result = `${value}°C = ${(value * 9) / 5 + 32}°F`;
-          break;
-        case "FtoC":
-          result = `${value}°F = ${((value - 32) * 5) / 9}°C`;
-          break;
-        case "MtoF":
-          result = `${value} meters = ${(value * 3.28084).toFixed(2)} feet`;
-          break;
-        case "FtoM":
-          result = `${value} feet = ${(value / 3.28084).toFixed(2)} meters`;
-          break;
+    // Conversion function
+    function performConversion() {
+      const type = document.getElementById('conversionType').value;
+      const input = parseFloat(document.getElementById('conversionInput').value);
+      if (isNaN(input)) {
+        alert('Please enter a valid number.');
+        return;
       }
-      document.getElementById("conversionResult").textContent = result;
-      activityLog.push(`Conversion (${type}): ${result}`);
-    } else {
-      document.getElementById("conversionResult").textContent = "Invalid input.";
+
+      let result;
+      if (type === 'CtoF') {
+        result = (input * 9 / 5) + 32;
+      } else if (type === 'FtoC') {
+        result = (input - 32) * 5 / 9;
+      } else if (type === 'MtoF') {
+        result = input * 3.28084;
+      } else if (type === 'FtoM') {
+        result = input / 3.28084;
+      }
+
+      document.getElementById('conversionResult').innerText = `Result: ${result.toFixed(2)}`;
     }
-  }
 
     // Factorial function
     function calculateFactorial() {
@@ -391,28 +382,7 @@ footer p {
       document.getElementById('sumAverageResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
     }
 
-    // Income tax calculator
-    function calculateIncomeTax() {
-      const income = parseFloat(document.getElementById('incomeTaxInput').value);
-      if (isNaN(income) || income < 0) {
-        alert('Please enter a valid income.');
-        return;
-      }
-
-      let tax;
-      if (income <= 10000) {
-        tax = income * 0.1;
-      } else if (income <= 20000) {
-        tax = 1000 + (income - 10000) * 0.2;
-      } else {
-        tax = 3000 + (income - 20000) * 0.3;
-      }
-
-        document.getElementById('incomeTaxResult').innerText = `Tax: ₱${tax.toFixed(2)}`;
-}
-
-
- function addEmployee() {
+    function addEmployee() {
   const name = document.getElementById('employeeName').value.trim();
   const daysWorked = parseInt(document.getElementById('daysWorked').value);
   const dailyRate = parseFloat(document.getElementById('dailyRate').value);
