@@ -20,9 +20,12 @@
       min-height: 100vh;
     }
 
-    h1 {
-      margin: 20px 0;
-    }
+   <style>
+  h1 {
+    font-weight: 700; /* Makes the font bold */
+    color: #000000;   /* Changes the text color to dark black */
+    margin: 20px 0;
+  }
 
     .feature-container {
       display: grid;
@@ -381,7 +384,35 @@ footer p {
 
       document.getElementById('sumAverageResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
     }
+  function calculateIncomeTax() {
+    const annualIncome = parseFloat(document.getElementById('incomeTaxInput').value);
 
+    if (isNaN(annualIncome) || annualIncome < 0) {
+      alert('Please enter a valid annual income.');
+      return;
+    }
+
+    // Example Philippine Tax Brackets (2023 rates)
+    let tax = 0;
+    if (annualIncome <= 250000) {
+      tax = 0; // No tax for income up to ₱250,000
+    } else if (annualIncome <= 400000) {
+      tax = (annualIncome - 250000) * 0.2; // 20% tax on income between ₱250,001 and ₱400,000
+    } else if (annualIncome <= 800000) {
+      tax = 30000 + (annualIncome - 400000) * 0.25; // 25% tax on income between ₱400,001 and ₱800,000
+    } else if (annualIncome <= 2000000) {
+      tax = 130000 + (annualIncome - 800000) * 0.3; // 30% tax on income between ₱800,001 and ₱2,000,000
+    } else {
+      tax = 490000 + (annualIncome - 2000000) * 0.32; // 32% tax on income over ₱2,000,000
+    }
+
+    // Display the result
+    const resultDiv = document.getElementById('incomeTaxResult');
+    resultDiv.innerHTML = `
+      <p>Your annual income: <strong>₱${annualIncome.toLocaleString()}</strong></p>
+      <p>Calculated income tax: <strong>₱${tax.toLocaleString()}</strong></p>
+    `;
+  }
     function addEmployee() {
   const name = document.getElementById('employeeName').value.trim();
   const daysWorked = parseInt(document.getElementById('daysWorked').value);
